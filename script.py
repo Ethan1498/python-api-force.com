@@ -30,3 +30,10 @@ if 'code' in query:
     headers = {
             'content-type': 'application/x-www-form-urlencoded'
     }
+    req = requests.post(access_token_url, data=data,headers=headers)
+    response = req.json()
+    sf = Salesforce(instance_url=response['instance_url'], session_id=response['access_token'])
+    records = sf.query("SELECT Id, Name, Email FROM Contact")
+    records = records['records']
+
+# Print the web page
