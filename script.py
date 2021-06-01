@@ -37,3 +37,17 @@ if 'code' in query:
     records = records['records']
 
 # Print the web page
+print "Content-type: text/html"
+print
+
+print "<html><body>"
+print "<h1>SELECT Id, Name, Email FROM Contact</h1>"
+
+print "<table>"
+print "<tr><td><b>Name</b></td><td><b>Email</b></td></tr>"
+for record in records:
+    print "<tr><td>"+record['Name']+"</td><td>"+record['Email']+"</td></tr>"
+
+print "</table>"
+
+print "</body></html>"
