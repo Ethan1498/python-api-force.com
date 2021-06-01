@@ -16,3 +16,17 @@ req = None
 if 'login' in query:
     print "Location: https://login.salesforce.com/services/oauth2/authorize?response_type=code&client_id="+consumer_key+"&redirect_uri="+redirect_uri
     print
+
+if 'code' in query:
+    code = query.getvalue('code')
+
+    data = {
+            'grant_type': 'authorization_code',
+            'redirect_uri': redirect_uri,
+            'code': code,
+            'client_id' : consumer_key,
+            'client_secret' : consumer_secret
+    }
+    headers = {
+            'content-type': 'application/x-www-form-urlencoded'
+    }
